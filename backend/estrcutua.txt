@@ -1,0 +1,46 @@
+Definir base Datos  y collecciones :
+
+Nombre: makecode
+
+collecciones:
+usuarios = {
+    nombres: 
+    apellidos:
+    correo:
+    fecha de nacimiento:
+    contrasena:
+    plan:
+    repositorio:{
+        carpeta:{
+            nombre:
+            id:
+        }
+        carpeta:{
+            nombre: 
+            id:
+        }
+    }
+}
+
+planes = {
+    plan gratis
+    plan gold 
+    pland platinum
+
+}
+carpeta = {
+  id =
+  codigo js :{
+      json con todas las lineas
+  }
+  snnippet.json :{
+      
+  }
+}
+
+
+El proyecto se guarda en una coleccion llamada carpetas y se guarsda como una carpeta 
+con tres archivos el html,js, css
+
+
+

@@ -1,0 +1,19 @@
+Pantallas:
+Landing Page -- casi lista
+Login --- implementacion angular
+Registro usuarios ---  implementacion angular
+
+
+Luego de Loguearse:
+
+-Pantalla Principal con los textarea para escribir codigo ---- falta elaborar bien
+en ellla se encontrara el navbar con: 
+-pestana repositorio  ----- pestana como la paginma principal de google drive dondre se podra crear proyectos,carpetas, archivo. ademas
+                            de elminarse, modificarse, y descargarse
+-pestana crar snippet   ------ pantalla con el archivo snippett a crearse css.json, html.json,etc con los formatos a guardarse
+-pestana crear proyecto ---- es la pantalla principal
+-logo perfil ----- Con las opciones:
+            -administrar perfil
+            -desloguearse
+
+
