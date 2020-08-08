@@ -10,32 +10,30 @@ usuarios = {
     fecha de nacimiento:
     contrasena:
     plan:
-    repositorio:{
-        carpeta:{
-            nombre:
-            id:
-        }
-        carpeta:{
-            nombre: 
-            id:
-        }
+    carpeta:{
+        _id:
+        nombrecarpeta:
+        contenido:[
+            {
+                _id:
+                nombrecarpeta:
+                contenido:[]
+            },
+            {
+                _id:
+                nombreArchivo:
+                contenido:[]
+            },
+        ]
+       
     }
 }
 
 planes = {
-    plan gratis
-    plan gold 
-    pland platinum
-
-}
-carpeta = {
-  id =
-  codigo js :{
-      json con todas las lineas
-  }
-  snnippet.json :{
-      
-  }
+    nombrePlan:
+    limite:
+    _id:
+    precio:
 }
 
 

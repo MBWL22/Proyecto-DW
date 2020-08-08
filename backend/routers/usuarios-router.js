@@ -113,9 +113,11 @@ router.post('/:idUsuario/carpeta/:idCarpeta/', function (req, res){
         {
             $push:{
                 "carpeta.$.contenido":{
-                    nombre:req.body.nombreCancion,
-                    artista:req.body.artista,
-                    album:req.body.album
+                    nombreArchivo:req.body.nombreArchivo,
+                    lenguaje:req.body.lenguaje,
+                    lineas:req.body.lineas,
+                    fechaCreacion:req.body.fechaCreacion,
+                    fechaModificacion: req.body.fechaModificacion,
                 }
             }
         }
@@ -133,7 +135,8 @@ router.post('/:idUsuario/carpeta/:idCarpeta/', function (req, res){
 router.post('/:idUsuario/carpeta/:idCarpeta', function (req, res){
     usuario.update(
         {
-            _id: mongoose.Types.ObjectId(req.params.idUsuario) 
+            _id:mongoose.Types.ObjectId(req.params.idUsuario),
+            "carpeta._id":mongoose.Types.ObjectId(req.params.idCarpeta)
         },
         {
             $push:{
