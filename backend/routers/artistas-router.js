@@ -3,7 +3,7 @@ var router = express.Router();
 var artista = require('../models/artista');
 var mongoose = require('mongoose');
 
-//Obtener Artistas
+//Obtener Archivo
 router.get('/',function (req, res){
     artista.find({},{_id:true, nombreArtista:true})
     .then(result=>{

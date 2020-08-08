@@ -3,46 +3,75 @@ var router = express.Router();
 var usuario = require('../models/usuario');
 var mongoose = require('mongoose');
 
-//Obtener usuarios
-router.get('/',function (req, res){
-    usuario.find({},{_id: true, nombreUsuario:true})
-    .then(result=>{
-        res.send(result);
-        res.end();
-    })
-    .catch(error=>{
-        res.send(error);
-        res.end();
-    });
-});
-
-//Obtener playlist y sus canciones
-//http://localhost/usuarios/123/playlist/3
-router.get('/:idUsuario/playlists/:idPlaylist',function (req, res){
-    usuario.find(
-        {
-            _id: req.params.idUsuario,
-            "playlists._id" : mongoose.Types.ObjectId(req.params.idPlaylist)
-        },
-        {"playlists.$":true})
-    .then(result=>{
+//Obtener un usuario
+router.get('/:idUsuario', function(req,res){
+    usuario.find({correo:req.params.correo}).then(result=>{
         res.send(result[0]);
         res.end();
-    })
-    .catch(error=>{
+    }).catch(error=>{
         res.send(error);
         res.end();
     });
 });
 
-//Obtener listado de las playlist
-//http://localhost/usuarios/123/playlists
-router.get('/:idUsuario/playlists',function (req, res){
+
+//Crear un usuario
+router.post('/', function(req, res){
+    let u = new usuario(
+        {
+            nombreUsuario: req.body.nombreUsuario,
+            apelidoUsuario: req.body.apelidoUsuario,
+            email: req.body.email,
+            fechaNacimiento: req.body.fechaNacimiento,
+            password: req.body.password,
+            plan: req.body.plan,
+            carpeta: {
+               _id :mongoose.Types.ObjectId(),
+               nombreCarpeta:  "repositorio",
+               contenido: []
+            }  
+        }
+    );
+    u.save().then(result=>{
+        res.send(result);
+        res.end();
+    }).catch(error=>{
+        res.send(error);
+        res.end();
+    });
+});
+
+//Actualizar un usuario
+router.put('/:idUsuario',function(req, res){
+    usuario.update(
+        {
+            _id:req.params.idUsuario
+        },
+        {
+            nombreUsuario: req.body.nombreUsuario,
+            apelidoUsuario: req.body.apelidoUsuario,
+            email: req.body.email,
+            fechaNacimiento: req.body.fechaNacimiento,
+            password: req.body.password,
+            plan: req.body.plan
+        }
+    ).then(result=>{
+        res.send(result);
+        res.end();
+    }).catch(error=>{
+        res.send(error);
+        res.end();
+    });
+});
+
+//Obtener la carpeta principal del usuario
+//http://localhost/usuarios/123/repositorio
+router.get('/:idUsuario/carpeta',function (req, res){
     usuario.find(
         {
             _id: req.params.idUsuario
         },
-        {"playlists":true})
+        {"carpeta":true})
     .then(result=>{
         res.send(result[0]);
         res.end();
@@ -53,17 +82,38 @@ router.get('/:idUsuario/playlists',function (req, res){
     });
 });
 
-//Guardar cancion en playlist
-router.post('/:idUsuario/playlists/:idPlaylist/canciones', function (req, res){
+//Obtener carpeta y sus archivos
+//http://localhost/usuarios/123/repositorio/3
+router.get('/:idUsuario/carpeta/:idCarpeta',function (req, res){
+    usuario.find(
+        {
+            _id: req.params.idUsuario,
+            "carpeta._id" : mongoose.Types.ObjectId(req.params.idCarpeta)
+        },
+        {"carpeta.$":true})
+    .then(result=>{
+        res.send(result[0]);
+        res.end();
+    })
+    .catch(error=>{
+        res.send(error);
+        res.end();
+    });
+});
+
+
+
+//Guardar archivo en carpeta
+router.post('/:idUsuario/carpeta/:idCarpeta/', function (req, res){
     usuario.update(
         {
             _id:mongoose.Types.ObjectId(req.params.idUsuario),
-            "playlists._id":mongoose.Types.ObjectId(req.params.idPlaylist)
+            "carpeta._id":mongoose.Types.ObjectId(req.params.idCarpeta)
         },
         {
             $push:{
-                "playlists.$.canciones":{
-                    nombreCancion:req.body.nombreCancion,
+                "carpeta.$.contenido":{
+                    nombre:req.body.nombreCancion,
                     artista:req.body.artista,
                     album:req.body.album
                 }
@@ -79,18 +129,18 @@ router.post('/:idUsuario/playlists/:idPlaylist/canciones', function (req, res){
 });
 
 
-//Crear un nuevo playlist
-router.post('/:idUsuario/playlists', function (req, res){
+//Crear una nueva carpeta 
+router.post('/:idUsuario/carpeta/:idCarpeta', function (req, res){
     usuario.update(
         {
             _id: mongoose.Types.ObjectId(req.params.idUsuario) 
         },
         {
             $push:{
-                playlists:{
+                repositorio:{
                     _id: mongoose.Types.ObjectId(),
-                    tituloPlayList: req.body.tituloPlayList,
-                    canciones: []
+                    nombreCarpeta: req.body.nombreCarpeta,
+                    contenido: []
                 }
             }
         }

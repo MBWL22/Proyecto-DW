@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var servidor = 'localhost:27017';
-var db = 'spotify';
+var db = 'proyectoMakeCode';
 
 class Database{
     constructor(){

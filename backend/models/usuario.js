@@ -2,7 +2,12 @@ var mongoose = require('mongoose');
 var esquema = new mongoose.Schema(
     {
         nombreUsuario: String,
-        playlists: Array
+        apelidoUsuario: String,
+        correo: String,
+        fechaNacimiento: Date,
+        password: String,
+        plan: Object,
+        carpeta: Object
     }
 );
 
