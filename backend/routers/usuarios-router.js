@@ -2,28 +2,53 @@ var express = require('express');
 var router = express.Router();
 var usuario = require('../models/usuario');
 var mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const SECRET_KEY = 'secretkey123456';
 
-//Obtener un usuario
-router.get('/:idUsuario', function(req,res){
-    usuario.find({correo:req.params.correo}).then(result=>{
-        res.send(result[0]);
-        res.end();
-    }).catch(error=>{
-        res.send(error);
-        res.end();
-    });
+//Login de un usuario
+router.get('/login', function(req,res){
+    const userData = {
+        correo: req.body.correo,
+        password: req.body.password
+    }
+    usuario.findOne({ correo: userData.correo }, (err, user) => {
+        if (err) return res.status(500).send('Server error!');
+    
+        if (!user) {
+          // email does not exist
+          res.status(409).send({ message: 'El correo no existe' });
+        } else {
+          const resultPassword = bcrypt.compareSync(userData.password, user.password);
+          if (resultPassword) {
+            const expiresIn = 24 * 60 * 60;
+            const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: expiresIn });
+    
+            const dataUser = {
+              name: user.name,
+              email: user.email,
+              accessToken: accessToken,
+              expiresIn: expiresIn
+            }
+            res.send({ dataUser });
+          } else {
+            // password wrong
+            res.status(409).send({ message: 'Contrasena invalida' });
+          }
+        }
+      });
 });
 
 
-//Crear un usuario
+//Registro de usuario con clave encriptada y expiracion de secion
 router.post('/', function(req, res){
     let u = new usuario(
         {
             nombreUsuario: req.body.nombreUsuario,
             apelidoUsuario: req.body.apelidoUsuario,
-            email: req.body.email,
+            correo: req.body.correo,
             fechaNacimiento: req.body.fechaNacimiento,
-            password: req.body.password,
+            password: bcrypt.hashSync(req.body.password),
             plan: req.body.plan,
             carpeta: {
                _id :mongoose.Types.ObjectId(),
@@ -34,8 +59,28 @@ router.post('/', function(req, res){
     );
     u.save().then(result=>{
         res.send(result);
+        const expiresIn = 24 * 60 * 60;
+        const accessToken = jwt.sign({ id: user.id },
+        SECRET_KEY, {
+            expiresIn: expiresIn
+        });
+        const dataUser = {
+        name: user.name,
+        correo: user.correo,
+        accessToken: accessToken,
+        expiresIn: expiresIn
+        }
+        // response 
+        res.send({ dataUser });
         res.end();
     }).catch(error=>{
+        if (error && error.code === 11000){
+            res.status(409).send('Email already exists');
+            res.end();
+        } else if (error){
+            res.status(500).send('Server error');
+            res.end();
+        } 
         res.send(error);
         res.end();
     });
@@ -50,9 +95,9 @@ router.put('/:idUsuario',function(req, res){
         {
             nombreUsuario: req.body.nombreUsuario,
             apelidoUsuario: req.body.apelidoUsuario,
-            email: req.body.email,
+            correo: req.body.correo,
             fechaNacimiento: req.body.fechaNacimiento,
-            password: req.body.password,
+            password: bcrypt.hashSync(req.body.password),
             plan: req.body.plan
         }
     ).then(result=>{

@@ -6,16 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'spotify-frontend';
+  title = 'makecode-frontend';
   regionVisible:string = '';
 
-  verArtista(id){
-    this.regionVisible = 'artistas';
-    console.log('Ver artista con ID: ' + id);
-  }
+  // verArtista(id){
+  //   this.regionVisible = 'artistas';
+  //   console.log('Ver artista con ID: ' + id);
+  // }
 
-  verPlaylist(id){
-    this.regionVisible = 'playlists';
-    console.log('Ver playlist con ID: ' + id);
-  }
+  // verPlaylist(id){
+  //   this.regionVisible = 'playlists';
+  //   console.log('Ver playlist con ID: ' + id);
+  // }
 }

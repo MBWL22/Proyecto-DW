@@ -1,11 +1,28 @@
 var mongoose = require('mongoose');
 var esquema = new mongoose.Schema(
     {
-        nombreUsuario: String,
-        apelidoUsuario: String,
-        correo: String,
+        nombreUsuario: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        apelidoUsuario: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        correo:  {
+            type: String,
+            required: true,
+            trim: true,
+            unique: true
+        },
         fechaNacimiento: Date,
-        password: String,
+        password:{
+            type: String,
+            required: true,
+            trim: true
+        },
         plan: Object,
         carpeta: Object
     }
