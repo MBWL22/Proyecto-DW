@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'makecode-frontend';
   regionVisible:string = '';
+  
+  constructor(private router: Router, private route: ActivatedRoute) {
 
+  }
+
+  goLogin() {
+    this.router.navigate(['/login']);
+  }
   // verArtista(id){
   //   this.regionVisible = 'artistas';
   //   console.log('Ver artista con ID: ' + id);

@@ -5,11 +5,11 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ArtistasService {
+export class PlanesService {
 
   constructor(private httpClient:HttpClient) { }
 
-  obtenerArtistas():Observable<any>{
-    return this.httpClient.get('http://localhost:8888/artistas',{});
+  obtenerPlanes():Observable<any>{
+    return this.httpClient.get('http://localhost:8888/planes',{});
   }
 }
