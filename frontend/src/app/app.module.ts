@@ -12,6 +12,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ValidateEqualModule } from 'ng-validate-equal';
 
 @NgModule({
   declarations: [
@@ -27,8 +29,10 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ValidateEqualModule
   ],
   providers: [],
   bootstrap: [AppComponent]

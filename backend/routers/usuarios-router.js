@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const SECRET_KEY = 'secretkey123456';
 
 //Login de un usuario
-router.get('/login', function(req,res){
+router.post('/login', function(req,res){
     const userData = {
         correo: req.body.correo,
         password: req.body.password

@@ -2,7 +2,7 @@
  <!--==========================
       Contact Section
     ============================-->
-    <section id="contact" >
+    <section id="contact" class="registro">
       <div class="container">
 
         <div class="section-header">
@@ -39,36 +39,51 @@
         </div>
 
         <div class="form">
-          <div id="sendmessage"></div>
-          <div id="errormessage"></div>
-          <form action="" method="post" role="form" class="contactForm">
+          <form [formGroup]="formularioRegistro" class="contactForm">
             <div class="form-row">
               <div class="form-group col-md-6">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Nombres" data-rule="minlen:4" data-msg="Ingresa un nombre valido" />
-                <div class="validation"></div>
+                <input type="text" formControlName="nombreUsuario" class="form-control" id="nombreUsuario" placeholder="Nombres" required/>
+                <div *ngIf="nombreUsuario.invalid && (nombreUsuario.dirty || nombreUsuario.touched)" style="color: red;">
+                  <span *ngIf="nombreUsuario.errors.required">Error el campo es obligatorio</span>
+                  <span *ngIf="nombreUsuario.errors.minLength">Error el tamaño minimo es de 2 caracteres</span>
+                </div>
               </div>
               <div class="form-group col-md-6">
-                  <input type="text" name="apellido" class="form-control" id="apellido" placeholder="Apellidos" data-rule="minlen:4" data-msg="Ingresa un apellido valido" />
-                  <div class="validation"></div>
+                  <input type="text" formControlName="apelidoUsuario"  class="form-control" id="apelidoUsuario" placeholder="Apellidos"  required/>
+                  <div *ngIf="apelidoUsuario.invalid && (apelidoUsuario.dirty || apelidoUsuario.touched)" style="color: red;">
+                    <span *ngIf="apelidoUsuario.errors.required">Error el campo es obligatorio</span>
+                    <span *ngIf="apelidoUsuario.errors.minLength">Error el tamaño minimo es de 2 caracteres</span>
+                  </div>
                 </div>
                 <div class="form-group col-md-6">
-                  <input type="date" name="fecha-nacimiento" class="form-control" id="fecha-nacimiento" placeholder="Fecha de Nacimiento"/>
-                  <div class="validation"></div>
+                  <input type="date"  formControlName="fechaNacimiento" class="form-control" id="fechaNacimiento" placeholder="Fecha de Nacimiento"  required/>
+                  <div  *ngIf="fechaNacimiento.invalid && (fechaNacimiento.dirty || fechaNacimiento.touched)" style="color: red;">
+                    <span *ngIf="fechaNacimiento.errors.required">Error el campo es obligatorio</span>
+                  </div>
                 </div>
               <div class="form-group col-md-6">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Correo" data-rule="email" data-msg="Ingresa un correo valido" />
-                <div class="validation"></div>
+                <input type="email" class="form-control" formControlName="correo" id="correo" placeholder="Correo" required/>
+                <div  *ngIf="correo.invalid && (correo.dirty || correo.touched)" style="color: red;">
+                  <span *ngIf="correo.errors.required">Error el campo es obligatorio</span>
+                  <span *ngIf="correo.errors.email">Error el correo ingresado no es valido</span>
+                </div>
               </div>
               <div class="form-group col-md-6">
-                  <input type="password" class="form-control" name="password" id="password" placeholder="contrasena" data-rule="minlen:8" data-msg="Ingrese a una contresena valida" />
-                  <div class="validation"></div>
+                  <input type="password" class="form-control" formControlName="password"  id="password" placeholder="contrasena"  required/>
+                  <div  *ngIf="password.invalid && (password.dirty || password.touched)" style="color: red;">
+                    <span *ngIf="password.errors.required">Error el campo es obligatorio</span>
+                    <span *ngIf="password.errors.minLength">Error el tamaño minimo es de 8 caracteres</span>
+                  </div>
                 </div>
                 <div class="form-group col-md-6">
-                  <input type="password" class="form-control" name="password" id="password" placeholder="confirmar contrasena" data-rule="minlen:8" data-msg="Ingrese a una contresena valida" />
-                  <div class="validation"></div>
+                  <input type="password" class="form-control" formControlName="confirmPassword"  id="confirmPassword" placeholder="confirmar contrasena" required/>
+                  <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" style="color: red;">
+                    <span *ngIf="confirmPassword.errors.required">Error el campo es obligatorio</span>
+                    <!-- <span *ngIf="!this.checkPasswords">La contrasenas no coinciden</span> -->
+                  </div>
                 </div>
             </div>
-            <div class="text-center"><button type="submit">Resgistrarse</button></div>
+            <div class="text-center"><button type="button" [disabled]="!formularioRegistro.valid " (click)="onRegister()">Resgistrarse</button></div>
           </form>
         </div>
 
