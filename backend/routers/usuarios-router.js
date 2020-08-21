@@ -25,7 +25,7 @@ router.post('/login', function(req,res){
             const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: expiresIn });
     
             const dataUser = {
-              name: user.name,
+              name: user.correo,
               email: user.email,
               accessToken: accessToken,
               expiresIn: expiresIn
