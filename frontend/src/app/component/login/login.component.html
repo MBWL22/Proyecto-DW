@@ -27,13 +27,16 @@
                           </div>
                         </div>
                     </div>
+                    <div *ngIf="errors" style="color: red;">
+                      <span>{{errors}}</span><br>
+                    </div>
                     <div class="text-center"><button type="button" [disabled]="!formularioLogin.valid " (click)="onLogin()">Login</button></div>
                     <div  class="form-group ">
                       <p><a href="#">Olvidaste tu contrasena?</a> </p>
                       
                     </div>
                     <div class="form-group ">
-                      <p><a href="#">Registrarse</a></p>
+                      <p><a [routerLink]="['/register']">Registrarse</a></p>
                     </div>
                   </form>
                 </div>

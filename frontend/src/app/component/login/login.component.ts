@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     correo:new FormControl('', [Validators.required]),
     password:new FormControl('', [Validators.required]),
   });
-
+  errors:any;
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -31,6 +31,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.formularioLogin.value).subscribe(res => {
       console.log(res);
       this.router.navigateByUrl('/inicio');
+    },error => {
+      console.log(error)
+      this.errors = error.error.message;
     });
   }
 }

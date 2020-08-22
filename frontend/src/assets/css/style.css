@@ -1344,6 +1344,15 @@ body.mobile-nav-active #mobile-nav-toggle {
   cursor: pointer;
 }
 
+#contact .form button[type="submit"]:disabled {
+  background: #d9eee3;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
 #contact .form button[type="submit"]:hover {
   background: #13a456;
 }
