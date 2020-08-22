@@ -15,10 +15,14 @@ export class RegisterComponent implements OnInit {
     nombreUsuario:new FormControl('', [Validators.required, Validators.minLength(2)]),
     apelidoUsuario:new FormControl('', [Validators.required, Validators.minLength(2)]),
     correo:new FormControl('', [Validators.required,Validators.email]),
+    plan:new FormControl('', [Validators.required]),
     fechaNacimiento:new FormControl('', [Validators.required]),
     password:new FormControl('', [Validators.required, Validators.minLength(8)]),
     confirmPassword:new FormControl('',  [Validators.required]),
   });
+
+  passwordInvalida:Boolean = false;
+  errors:any;
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -35,6 +39,10 @@ export class RegisterComponent implements OnInit {
     return this.formularioRegistro.get('correo');
   }
 
+  get plan(){
+    return this.formularioRegistro.get('correo');
+  }
+
   get fechaNacimiento(){
     return this.formularioRegistro.get('fechaNacimiento');
   }
@@ -46,18 +54,25 @@ export class RegisterComponent implements OnInit {
     return this.formularioRegistro.get('confirmPassword');
   }
 
-  // checkPasswords( ) { // here we have the 'passwords' group
-  //   let pass =this.formularioRegistro.get('password').value;
-  //   let confirmPass = this.formularioRegistro.get('confirmPassword').value;
-
-  //   return pass === confirmPass ? null : { notSame: true }     
-  // }
   onRegister(){
     console.log('Formulario válido:' , this.formularioRegistro.valid);
-    this.authService.register(this.formularioRegistro.value).subscribe(res => {
-      console.log(res);
-      this.router.navigateByUrl('/auth');
-    });
+
+    if(this.formularioRegistro.valid){
+      if(this.password.value === this.confirmPassword.value){
+        this.passwordInvalida = false;
+        this.authService.register(this.formularioRegistro.value).subscribe(res => {
+          console.log(res);
+          this.router.navigateByUrl('/inicio');
+        },error => {
+          console.log(error)
+          this.errors = error.error;
+          ;
+        });
+      }else{
+        this.passwordInvalida = true;
+      }
+    }
+   
   }
 
 }

@@ -25,8 +25,8 @@ router.post('/login', function(req,res){
             const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: expiresIn });
     
             const dataUser = {
-              name: user.correo,
-              email: user.email,
+              id: user.id,
+              correo: user.correo,
               accessToken: accessToken,
               expiresIn: expiresIn
             }
@@ -57,15 +57,15 @@ router.post('/', function(req, res){
             }  
         }
     );
-    u.save().then(result=>{
-        res.send(result);
+    u.save().then(user=>{
         const expiresIn = 24 * 60 * 60;
         const accessToken = jwt.sign({ id: user.id },
         SECRET_KEY, {
             expiresIn: expiresIn
         });
         const dataUser = {
-        name: user.name,
+        nombreUsuario: user.nombreUsuario,
+        apelidoUsuario:user.apelidoUsuario,
         correo: user.correo,
         accessToken: accessToken,
         expiresIn: expiresIn
@@ -75,7 +75,7 @@ router.post('/', function(req, res){
         res.end();
     }).catch(error=>{
         if (error && error.code === 11000){
-            res.status(409).send('Email already exists');
+            res.status(409).send('El correo ya existe');
             res.end();
         } else if (error){
             res.status(500).send('Server error');
