@@ -7,6 +7,7 @@ import { AppLandingComponent } from './app-landing/app-landing.component';
 import { AppInicioComponent } from './app-inicio/app-inicio.component';
 import { ProyectoComponent } from './inicio/proyecto/proyecto.component';
 import { RepositorioComponent } from './inicio/repositorio/repositorio.component';
+import { AuthGuarGuard } from './services/guards/auth-guard.guard';
 
 const routes: Routes = [
   { path: '', component: AppLandingComponent, children: [

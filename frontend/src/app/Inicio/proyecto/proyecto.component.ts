@@ -1,5 +1,5 @@
 import { Component, OnInit, } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,  } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ScriptsService } from 'src/app/scripts.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   selector: 'app-proyecto',
   templateUrl: './proyecto.component.html',
   styleUrls: ['./proyecto.component.css'],
-  providers: [ AuthService]
+  providers: [ AuthService, ]
 })
 
 
@@ -24,6 +24,12 @@ export class ProyectoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.authService.inSesion() && this.authService.inSesion() !== ''){
+      console.log('esta logueado');
+  }else{
+      console.log('necesita loguearse');
+      this.router.navigate(['/login']);
+  }
   }
 
 }

@@ -5,32 +5,26 @@
             <div class="section-header">
               <h3>Bienvenido Michael Banegas</h3>
             </div>
-    <div>
-        Nuevo Proyecto
-    </div>
        <div class="contenedor-titulo mt-3 mb-3" style="margin-left: 30%; margin-right: 40%;">
           <span style="color: black;">Titulo Proyecto:</span>
               <input type="text" class="form-control" value="Nuevo proyecto ">
        </div>
-        
-            <div class="container">
-              <div class="row">
+              <div class="row" style="margin: auto;">
                 <div class="col-4">
-                    <!--Contenedor con el editor tipo html-->
+                  <span style="color: black;">HTML:</span>
                     <div id="editor"></div>
                 </div>
                 <div class="col-4">
-                    <!--Contenedor con el editor tipo css-->
+                  <span style="color: black;">CSS:</span>
                     <div id="editor2"></div>
                 </div>
                 <div class="col-4">
-                  <!--Contenedor con el editor tipo javascript-->
+                  <span style="color: black;">JS:</span>
                   <div id="editor3"></div>
                 </div>
-              </div>
+               <!--Etiqueta de renderización-->
+            <button class="btn btn-success" onclick="update()" style="margin-left: 45%;margin-top: 5%;">Ejecutar</button>
+              <iframe id="iframe" frameborder="0" style="border: 5px solid #000;margin-left: 5%;margin-top: 5%; margin-right: 5%;"></iframe>  
             </div>
-            <!--Etiqueta de renderización-->
-            <button class="btn btn-primary" onclick="update()">Guardar cambios</button>
-            <iframe id="iframe" frameborder="0" style="background-color: cornflowerblue;"></iframe>  
-            
+           
     </section><!-- #contact -->

@@ -12,15 +12,7 @@ export class HeaderComponent implements OnInit {
   
 
   ngOnInit(): void {
-    // this.usuariosService.obtenerUsuarios().subscribe(
-    //   res=>{
-    //     this.usuarios = res;
-    //     console.log('Usuarios', this.usuarios);
-    //   },
-    //   error=>{
-    //     console.log(error);
-    //   }
-    // )
+
   }
 
  

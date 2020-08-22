@@ -56,4 +56,8 @@ export class AuthService {
     return this.token;
   }
 
+  inSesion(){
+    return this.getToken();
+  }
+
 }

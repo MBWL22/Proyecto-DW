@@ -11,31 +11,7 @@
                 <div class="form" style="margin-right: 100px;margin-left: 100px;">
                   <div id="sendmessage"></div>
                   <div id="errormessage"></div>
-                  <form  [formGroup]="formularioLogin" class="contactForm">
-                    <div class="form-row">
-                     
-                      <div class="form-group col-md-12" style="margin-bottom: 20px;">
-                        <input type="email" class="form-control" formControlName="correo" id="correo" placeholder="Correo"  required/>
-                        <div *ngIf="correo.invalid && (correo.dirty || correo.touched)" style="color: red;">
-                          <span *ngIf="correo.errors.required">Error el campo es obligatorio</span>
-                        </div>
-                      </div>
-                      <div class="form-group col-md-12" style="margin-bottom: 20px;">
-                          <input type="password" class="form-control" formControlName="password" id="password" placeholder="Contrasena" required/>
-                          <div *ngIf="password.invalid && (password.dirty || password.touched)" style="color: red;">
-                            <span *ngIf="password.errors.required">Error el campo es obligatorio</span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="text-center"><button type="button" [disabled]="!formularioLogin.valid " (click)="onLogin()">Login</button></div>
-                    <div  class="form-group ">
-                      <p><a href="#">Olvidaste tu contrasena?</a> </p>
-                      
-                    </div>
-                    <div class="form-group ">
-                      <p><a href="#">Registrarse</a></p>
-                    </div>
-                  </form>
+                  
                 </div>
           </div>
 
