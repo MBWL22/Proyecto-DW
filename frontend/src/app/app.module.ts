@@ -20,7 +20,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValidateEqualModule } from 'ng-validate-equal';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +42,7 @@ import { ValidateEqualModule } from 'ng-validate-equal';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    ValidateEqualModule
+    ValidateEqualModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { ScriptsService } from 'src/app/scripts.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -9,6 +10,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./proyecto.component.css'],
   providers: [ AuthService]
 })
+
+
 export class ProyectoComponent implements OnInit {
 
   formularioLogin = new FormGroup({
@@ -16,21 +19,11 @@ export class ProyectoComponent implements OnInit {
     password:new FormControl('', [Validators.required]),
   });
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private _scripts: ScriptsService) { 
+    _scripts.load(["index/proyecto"])
+  }
 
   ngOnInit(): void {
   }
-  get correo(){
-    return this.formularioLogin.get('correo');
-  }
-  get password(){
-    return this.formularioLogin.get('password');
-  }
 
-  onLogin() {
-    this.authService.login(this.formularioLogin.value).subscribe(res => {
-      console.log(res);
-      this.router.navigateByUrl('/');
-    });
-  }
 }
