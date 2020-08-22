@@ -4,12 +4,12 @@ import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-proyecto',
+  templateUrl: './proyecto.component.html',
+  styleUrls: ['./proyecto.component.css'],
   providers: [ AuthService]
 })
-export class LoginComponent implements OnInit {
+export class ProyectoComponent implements OnInit {
 
   formularioLogin = new FormGroup({
     correo:new FormControl('', [Validators.required]),
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   onLogin() {
     this.authService.login(this.formularioLogin.value).subscribe(res => {
       console.log(res);
-      this.router.navigateByUrl('/inicio');
+      this.router.navigateByUrl('/');
     });
   }
 }
