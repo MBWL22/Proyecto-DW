@@ -1,3 +1,163 @@
 .login{
     background-color: white;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.todos{
+    padding: 3%
+}
+.titulo{
+    font-size: 2em;
+    color: #463967;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 3%;
+    border-left: 5px solid #FC5C7D;
+    border-radius: 5px;
+}
+.icono-acciones{
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 100%;
+    color: white;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+.icono-acciones:hover{
+    color: #0ae3c8;
+}
+.contenido-proyecto{
+    width: 100%;
+    height: auto;
+    
+}
+.verdadero{
+    border: solid 2px #706995;
+    border-radius: 5px;
+}
+.cont-acciones{
+    float: right;
+}
+.btn-acciones{
+    background-color: #0ae3c8;
+    border-color: #0ae3c8;
+}
+.acciones{
+    padding-top: 5px;
+    width: 100%;
+    height: 30px;
+    background-color: #706995;
+}
+.folder{
+    text-align: center;
+    font-size: 2em;
+    color: #706995;
+}
+.nombre-folder{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 4%;
+}
+.btn-nuevo{
+    float: right;
+    background-color: transparent;
+    border: none;
+    border: solid 1px #FC5C7D;
+    padding: 1% 5% 1% 5%;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 3%;
+    border-radius: 5px;
+    color: #FC5C7D;
+}
+.btn-nuevo:hover{
+    background-color: #FC5C7D;
+    color: white;
+}
+.titulo-nuevo{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    text-align: center;
+}
+.btn-guardar{
+    border:none;
+    border-radius: 5px;
+    border: solid 1px #FC5C7D;
+    color: #FC5C7D;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: transparent;
+}
+.btn-guardar:hover{
+    background-color: #FC5C7D;
+    color: white;
+}
+.btn-cerrar{
+    border:none;
+    border-radius: 5px;
+    border: solid 1px #463967;
+    color: #463967;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: transparent;
+}
+.btn-cerrar:hover{
+    background-color: #463967;
+    color: white;
+}
+#advertencia-papelera{
+    background: linear-gradient(to right, #46396790, #0ae3ca80) !important;
+}
+#nuevo-proyecto{
+    background: linear-gradient(to right, #46396790, #0ae3ca80) !important;  
+}
+
+.carousel {
+    width: 640px; 
+    height: 360px; 
+}
+
+.btn-accion{
+    margin-left: 2%;
+}
+.carpeta{
+    font-size: 30px;
+    color: #463967;
+    margin-right: 5%;
+}
+.archivos{
+    padding: 3px;
+}
+.modal-xl{
+    width: 100% !important;
+}
+.nuevo-fondo{
+    background-color: #243139 !important;
+}
+#editor { 
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+#editor2 { 
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+#editor3 { 
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+#repositorio {
+    margin-top: 2%;
+    width: 100%;
+    height: 800px;
+    border-radius: 10px;
 }

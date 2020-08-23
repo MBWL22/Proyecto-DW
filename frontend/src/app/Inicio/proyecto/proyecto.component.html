@@ -4,10 +4,12 @@
     <section id="contact" class="login">
             <div class="section-header">
               <h3>Bienvenido {{datosUsuario.nombreUsuario}}  {{datosUsuario.apelidoUsuario}}</h3>
+              
             </div>
        <div class="contenedor-titulo mt-3 mb-3" style="margin-left: 30%; margin-right: 40%;">
           <span style="color: black;">Titulo Proyecto:</span>
-              <input type="text" class="form-control" value="Nuevo proyecto ">
+              <input type="text" class="form-control" placeholder="Nuevo proyecto en MakeCode">
+              <button class="btn btn-primary"  style="margin-left: 45%;margin-top: 5%;">Guardar</button>  
        </div>
               <div class="row" style="margin: auto;">
                 <div class="col-4">
@@ -24,7 +26,8 @@
                 </div>
                <!--Etiqueta de renderización-->
             <button class="btn btn-success" onclick="update()" style="margin-left: 45%;margin-top: 5%;">Ejecutar</button>
-              <iframe id="iframe" frameborder="0" style="border: 5px solid #000;margin-left: 5%;margin-top: 5%; margin-right: 5%;"></iframe>  
+              <iframe id="iframe" frameborder="0" style="border: 5px solid #000;margin-left: 5%;margin-top: 5%; margin-right: 5%;"></iframe>
+             
             </div>
            
     </section><!-- #contact -->
