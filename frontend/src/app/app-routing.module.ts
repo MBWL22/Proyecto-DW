@@ -7,7 +7,7 @@ import { AppLandingComponent } from './app-landing/app-landing.component';
 import { AppInicioComponent } from './app-inicio/app-inicio.component';
 import { ProyectoComponent } from './inicio/proyecto/proyecto.component';
 import { RepositorioComponent } from './inicio/repositorio/repositorio.component';
-import { AuthGuarGuard } from './services/guards/auth-guard.guard';
+import { PerfilComponent } from './inicio/perfil/perfil.component';
 
 const routes: Routes = [
   { path: '', component: AppLandingComponent, children: [
@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'inicio', component: AppInicioComponent, children: [
     { path:'', component: ProyectoComponent},
     { path:'repositorio', component: RepositorioComponent}, 
+    { path:'perfil' , component: PerfilComponent}
    ]}
 ];
 

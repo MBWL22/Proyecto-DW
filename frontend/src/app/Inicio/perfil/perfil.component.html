@@ -1,13 +1,12 @@
-
  <!--==========================
       Contact Section
     ============================-->
-    <section id="contact" class="registro">
+    <section id="contact" class="login">
       <div class="container">
 
         <div class="section-header">
-          <h3>Registro</h3>
-          <p>Elige el plan con el que te resgistraras:</p>
+          <h3>Actualiza tus Datos Personales</h3>
+          <p>Cambia de plan para obtener mayores beneficios:</p>
         </div>
 
         
@@ -93,9 +92,11 @@
             </div>
             <div *ngIf="errors" style="color: red;">
               <span>{{errors}}</span><br>
-              <span style="color: blue;"><a [routerLink]="['/login']">Inicie sesion con este correo</a> </span>
             </div>
-            <div class="text-center"><button type="button" [disabled]="!formularioRegistro.valid " (click)="onRegister()">Resgistrarse</button></div>
+            <div *ngIf="messageUpdate" style="color: green;">
+              <span>El usuario fue actualizado Correctamente</span><br>
+            </div>
+            <div class="text-center"><button type="button" [disabled]="!formularioRegistro.valid " (click)="onEditUsuario()">Actualiza tu Datos</button></div>
           </form>
         </div>
 

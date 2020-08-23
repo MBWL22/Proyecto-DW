@@ -40,6 +40,18 @@ router.post('/login', function(req,res){
 });
 
 
+//Obtener datos de un usuario
+router.get('/:idUsuario', function(req,res){
+    usuario.findOne({ _id: req.params.idUsuario}).then(result=>{
+        res.send(result);
+        res.end();
+    }).catch(error=>{
+        res.send(error);
+        res.end();
+    });
+});
+
+
 //Registro de usuario con clave encriptada y expiracion de secion
 router.post('/', function(req, res){
     let u = new usuario(

@@ -1,6 +1,6 @@
 export interface JwtResponseI {
   dataUser: {
-    id: number,
+    id: string,
     name: string,
     email: string,
     accessToken: string,

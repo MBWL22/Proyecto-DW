@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValidateEqualModule } from 'ng-validate-equal';
+import { PerfilComponent } from './inicio/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ValidateEqualModule } from 'ng-validate-equal';
     AppInicioComponent,
     HeaderInicioComponent,
     RepositorioComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,

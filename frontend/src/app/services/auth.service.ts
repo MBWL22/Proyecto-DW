@@ -19,7 +19,7 @@ export class AuthService {
         (res: JwtResponseI) => {
           if (res) {
             // guardar token
-            this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
+            this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn, res.dataUser.id);
           }
         })
       );
@@ -31,7 +31,7 @@ export class AuthService {
         (res: JwtResponseI) => {
           if (res) {
             // guardar token
-            this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
+            this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn, res.dataUser.id);
           }
         })
       );
@@ -41,11 +41,13 @@ export class AuthService {
     this.token = '';
     localStorage.removeItem("ACCESS_TOKEN");
     localStorage.removeItem("EXPIRES_IN");
+    localStorage.removeItem("isUsuario");
   }
 
-  private saveToken(token: string, expiresIn: string): void {
+  private saveToken(token: string, expiresIn: string, idUsuario: string): void {
     localStorage.setItem("ACCESS_TOKEN", token);
     localStorage.setItem("EXPIRES_IN", expiresIn);
+    localStorage.setItem("idUsuario", idUsuario);
     this.token = token;
   }
 

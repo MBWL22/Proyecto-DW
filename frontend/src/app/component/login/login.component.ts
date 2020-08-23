@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -10,12 +10,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   providers: [ AuthService]
 })
 export class LoginComponent implements OnInit {
-
+  @Output() usuarioLogin = new EventEmitter();
   formularioLogin = new FormGroup({
     correo:new FormControl('', [Validators.required]),
     password:new FormControl('', [Validators.required]),
   });
   errors:any;
+  usuario:any = {};
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -30,6 +31,8 @@ export class LoginComponent implements OnInit {
   onLogin() {
     this.authService.login(this.formularioLogin.value).subscribe(res => {
       console.log(res);
+      this.usuario = res;
+      this.usuarioLogin.emit(this.usuario);
       this.router.navigateByUrl('/inicio');
     },error => {
       console.log(error)

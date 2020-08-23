@@ -12,4 +12,13 @@ export class UsuariosService {
   obtenerUsuarios():Observable<any>{
     return this.httpClient.get('http://localhost:8888/usuarios',{});
   }
+
+  obtenerDatosUsuario(idUsuario):Observable<any>{
+    return this.httpClient.get(`http://localhost:8888/usuarios/${idUsuario}`,{});
+  }
+
+  editUsuario(userData,idUsuario):Observable<any>{
+    return this.httpClient.put(`http://localhost:8888/usuarios/${idUsuario}`,userData);
+  }
+
 }

@@ -9,15 +9,15 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="justify-content: flex-end !important;">
       <ul class="navbar-nav my-2 my-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" >MakeCode Editor<span class="sr-only"></span></a>
+        <li class="nav-item ">
+          <a class="nav-link" [routerLink]="['/inicio']">MakeCode Editor<span class="sr-only"></span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Repositorio</a>
+          <a class="nav-link" [routerLink]="['/inicio/repositorio']">Repositorio</a>
         </li>
 		<li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Michael Banegas
+              {{datosUsuario.nombreUsuario}}  {{datosUsuario.apelidoUsuario}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" (click)="EditarPerfil()">Editar Perfil</a>
